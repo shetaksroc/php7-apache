@@ -17,17 +17,9 @@ RUN apt-get update && \
         re2c \
         libfreetype6-dev \
         libmcrypt-dev \
-        libxml2-dev && \
+        libxml2-dev \
+        libssl-dev && \
     rm -r /var/lib/apt/lists/*
-
-
-RUN cd /tmp/ && \
-    git clone https://github.com/php-memcached-dev/php-memcached.git /usr/src/php/ext/memcached && \
-    cd /usr/src/php/ext/memcached && \
-    git checkout php7 && \
-    pecl install mongodb xdebug && \
-    echo "extension=mongodb.so" > /usr/local/etc/php/conf.d/mongo.ini && \
-    docker-php-ext-enable xdebug
 
 RUN docker-php-ext-configure gd --with-jpeg-dir --with-png-dir --with-freetype-dir && \
 	docker-php-ext-install gd && \
@@ -39,4 +31,13 @@ RUN docker-php-ext-configure gd --with-jpeg-dir --with-png-dir --with-freetype-d
     a2ensite 000-default.conf && \
 	a2enmod rewrite
 
+RUN pecl install mongodb \
+	&& echo "extension=mongodb.so" > $PHP_INI_DIR/conf.d/mongodb.ini
+
 WORKDIR /var/app/web
+
+
+
+
+
+
