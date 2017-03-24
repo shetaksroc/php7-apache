@@ -19,6 +19,7 @@ RUN apt-get update && \
         libfreetype6-dev \
         libmcrypt-dev \
         libxml2-dev && \
+        libapache2-mod-php5 && \
     rm -r /var/lib/apt/lists/*
 
 
@@ -37,6 +38,7 @@ RUN docker-php-ext-configure gd --with-jpeg-dir --with-png-dir --with-freetype-d
 	docker-php-ext-install opcache && \
 	docker-php-ext-install memcached && \
 	docker-php-ext-install pdo pdo_mysql && \
+	docker-php-ext-install mysqli && \
         a2ensite 000-default.conf && \
 	a2enmod rewrite
 
