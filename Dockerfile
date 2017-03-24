@@ -19,7 +19,6 @@ RUN apt-get update && \
         libfreetype6-dev \
         libmcrypt-dev \
         libxml2-dev && \
-        libapache2-mod-php5 && \
     rm -r /var/lib/apt/lists/*
 
 
