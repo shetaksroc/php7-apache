@@ -1,4 +1,4 @@
-FROM php:apache
+FROM php:7.0-apache
 
 MAINTAINER Thiago Moreira <loganguns@gmail.com>
 
@@ -13,7 +13,7 @@ RUN apt-get update && \
         git \
         libmemcached-dev \
         libssl-dev \
-        libpng12-dev \
+        libpng-dev \
         libjpeg-dev \
         re2c \
         libfreetype6-dev \
